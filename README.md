@@ -42,7 +42,7 @@ ENV name DEVOPS SKILLRARY
 <p><span style="color: #00ff00;"><img src="https://www.skillrary.com/uploads/images/fav-sr-64x64-logo.png" alt="" width="64" height="64" /></span></p>
 ```
 
-##Execute the command below.
+## Execute the command below.
 ```dockerfile
 docker build -t skillrary_dockerfile .
 ```
