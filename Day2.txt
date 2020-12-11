@@ -1,0 +1,179 @@
+ 1  yum update
+    2  sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+    3  yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    4  yum install docker-ce docker-ce-cli containerd.io
+    5  systemctl start docker
+    6  yum install httpd
+    7  systemctl status httpd
+    8  systemctl start httpd
+    9  systemctl status httpd
+   10  clear
+   11  docker images
+   12  docker ps
+   13  docker info
+   14  clear
+   15  docker pull centos
+   16  docker pull centos:7
+   17  docker pull centos:centos6
+   18  docker images
+   19  docker pull windows
+   20  docker pull mcr.microsoft.com/windows/servercore
+   21  docker pull mcr.microsoft.com/windows/servercore:ltsc2019
+   22  docker images
+   23  docker pull ubuntu
+   24  docker images
+   25  clear
+   26  docker images
+   27  docker ps
+   28  docker run -it --name c1 -d centos
+   29  docker ps
+   30  docker run -it -d ubuntu
+   31  docker ps
+   32  docker create -it ubuntu
+   33  docker ps
+   34  docker ps -a
+   35  docker start d9325841e4cd
+   36  docker ps
+   37  docker stop d9325841e4cd
+   38  docker stop c1
+   39  docker ps
+   40  docker ps -a
+   41  docker ps
+   42  docker kill 5b9f78c60729
+   43  docker ps
+   44  docker ps -a
+   45  docker ps
+   46  docker ps -a
+   47  docker rm d9325841e4cd
+   48  docker rm 5b9f78c60729 c1
+   49  docker ps
+   50  docker ps -a
+   51  docker images
+   52  docker images rm centos:latest centos:7
+   53  docker rmi centos:latest centos:7
+   54  docker images
+   55  docker rmi ubuntu centos
+   56  docker rmi centos:centos6
+   57  docker rm
+   58  docker images
+   59  docker ps
+   60  docker ps -a
+   61  docker pull centos
+   62  docker pull ubuntu
+   63  docker images
+   64  docker run -it -d centos
+   65  docker run --help
+   66  docker run -it --cpus=1 -m=10M -d centos
+   67  docker run -it --cpus=1 -m 10M -d centos
+   68  docker run -it --cpus=1 --memory=10M -d centos
+   69  docker run -it --cpu-shares=:.5" -m 10M -d centos
+
+
+
+
+   70  docker run -it --cpu-shares=".5" -m 10M -d centos
+   71  docker run -it --cpu-shares -m 10M -d centos
+   72  docker run -it --cpus=".5" --memory=10M -d centos
+   73  docker run -it --cpus=".5" --memory=10m -d centos
+   74  docker ps
+   75  history
+   76  history >today
+  1  yum update
+    2  sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+    3  yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    4  yum install docker-ce docker-ce-cli containerd.io
+    5  systemctl start docker
+    6  yum install httpd
+    7  systemctl status httpd
+    8  systemctl start httpd
+    9  systemctl status httpd
+   10  clear
+   11  docker images
+   12  docker ps
+   13  docker info
+   14  clear
+   15  docker pull centos
+   16  docker pull centos:7
+   17  docker pull centos:centos6
+   18  docker images
+   19  docker pull windows
+   20  docker ps -a
+   21  docker ps
+   22  docker stats
+   23  docker ps
+   24  docker inspect 2c8f8ec72bff
+   25  docker ps
+   26  docker exec -it 2c8f8ec72bff bash
+   27  ls -ltr
+   28  pwd
+   29  cd /
+   30  ls -ltr
+   31  docker exec -it 2c8f8ec72bff bash
+   32  clear
+   33  docker ps
+   34  docker images
+   35  docker exec -it 2c8f8ec72bff bash
+   36  docker run -it --name c2 -d centos
+   37  docker exec -it c2 bash
+   38  docker ps
+   39  docker exec -it  576e3f3fd970 bash
+   40  docker ps
+   41  docker run -it --name c3 --privileged -d centos /usr/sbin/init
+   42  docker exec -it c3 bash
+   43  docker ps
+   44  docker exec -it 576e3f3fd970 bash
+   45  docker ps
+   46  docker exec -it c3 bash
+   47  docker commit ea3b343b1ab7 c3httpd
+   48  docker ps
+   49  docker images
+   50  docker run -it --name c4 --privileged -d c3httpd /usr/sbin/init
+   51  docker ps
+   52  docker exec -it c4 bash
+   53  docker update --help
+   54  docker ps
+   55  docker exec -it c4 bash
+   56  docke rps
+   57  docker ps
+   58  docker images
+   59  docker run -it --name c5 --privileged c3httpd /usr/sbin/init
+   60  docker start c5
+   61  docker ps
+   62  docker run -it --name c6 -p 8000:80 --privileged -d c3httpd /usr/sbin/init
+   63  docker ps
+   64  docker exec -it c6 bash
+   65  docker run -it --name c7 -p 8000:80 --privileged -d c3httpd /usr/sbin/init
+   66  docker run -it --name c7 -p 9000:80 --privileged -d c3httpd /usr/sbin/init
+   67  docker run -it --name c8 -p 9000:80 --privileged -d c3httpd /usr/sbin/init
+   68  docker exec -it c8 bash
+   69  docker ps
+   70  docker stats
+   71  docker ps
+   72  docker ps -a
+   73  docker ps -aq
+   74  docker stop $(docker ps -aq)
+   75  docker ps
+   76  docker ps -a
+   77  docker rm $(docker ps -aq)
+   78  docker ps
+   79  docker ps -a
+   80  docker images
+   81  docker save c3httpd >c3httpd.rar
+   82  ls -ltr
+   83  docker ps
+   84  docker images
+   85  docker rmi c3httpd:latest
+   86  docker images
+   87  docker load --input c3httpd.rar
+   88  docker images
+   89  docker tag c3httpd skillrary/c3httpd
+   90  docker images
+   91  docker push skillrary/c3httpd
+   92  docker login
+   93  docker push skillrary/c3httpd
+   94  docker images
+   95  docker rmi skillrary/c3httpd
+   96  docker images
+   97  docker pull skillrary/c3httpd
+   98  history
+   99  ls -ltr
