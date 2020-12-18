@@ -1,0 +1,246 @@
+  505  kubeadm init --pod-network-cidr=192.168.0.0/16
+  506   mkdir -p $HOME/.kube
+  507    sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  508    sudo chown $(id -u):$(id -g) $HOME/.kube/config
+  509   export KUBECONFIG=/etc/kubernetes/admin.conf
+  510  kubectl get nodes
+  511  docker ps
+  512  kubectl get pods
+  513  kubectl get pods --all-namespaces
+  514  kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
+  515  kubectl create -f https://docs.projectcalico.org/manifests/custom-resources.yaml
+  516  kubectl get pods --all-namespaces
+  517  kubeadm join 172.31.46.153:6443 --token 0yl419.n3b0igun5q7g6xrt \
+  518  kubectl get pods --all-namespaces
+  519  kubectl get nodes
+  520  kubectl create deployment nginx --image=nginx:1.7.9
+  521  kubectl get deployments
+  522  kubectl get pods
+  523  docker ps
+  524  kubectl delete deployment nginx
+  525  kubectl get pods
+  526  kubectl get deployments
+  527  kubectl get pods
+  528  vi deploy.yaml
+  529  kubectl create -f deploy.yaml
+  530  kubectl get deployments
+  531  kubectl get pods
+  532  kubectl rollout status deployment.v1.apps/nginx-deployment
+  533  cat deploy.yaml
+  534  kubectl get rs
+  535  kubectl get deployments
+  536  kubectl get pods
+  537  kubectl get services
+  538  systemctl status httpd
+  539  kubectl create service nodeport nginx --tcp=80:80
+  540  kubectl get services
+  541  kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
+  542  systemctl stop jenkins
+  543  systemctl status jenkins
+  544  kubectl get pods --all-namespaces
+  545  docker ps
+  546  cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: admin-user
+  namespace: kubernetes-dashboard
+EOF
+
+  547  cat <<EOF | kubectl apply -f -
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: admin-user
+  namespace: kubernetes-dashboard
+EOF
+
+  548  kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')
+  549  kubectl get pods --all-namespaces
+  550  kubectl get deployments --all-namespaces
+  551  kubectl get pods --all-namespaces
+  552  curl 127.0.0.1:8001/api
+  553  curl http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+  554  curl http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/
+  555  kubectl logs --tail=100 kubernetes-dashboard
+  556  kubectl get pods --all-namespaces
+  557  kubectl logs --tail=100 kubernetes-dashboard-74d688b6bc-ks69l
+  558  kubectl logs --tail=100 kubernetes-dashboard-74d688b6bc-ks69l --namespace=kubernetes-dashboard
+  559  docker ps
+  560  kubectl get pods --all-namespaces
+  561  kubectl --namespace=kubernetes-dashboard port-forward kubernetes-dashboard-74d688b6bc-ks69l 8443
+  562  kubectl logs --tail=100 calico-node-95vps --namespace=calico-system
+  563  ls -ltr
+  564  cd dockfile
+  565  ls -ltr
+  566  cd docfile/
+  567  ls -ltr
+  568  cd ..
+  569  ls -ltr
+  570  cd /var/
+  571  ls -ltr
+  572  cd www
+  573  ls -ltr
+  574  cd html/
+  575  ls -ltr
+  576  cd ../../..
+  577  ls -ltr
+  578  docker volume ls
+  579  docker volument inspect test
+  580  docker volumen inspect test
+  581  docker volume inspect test
+  582  ls -ltr "/var/lib/docker/volumes/test/_data"
+  583  cd "/var/lib/docker/volumes/test/_data"
+  584  ls -ltr
+  585  docker-compose down
+  586  kubectl delete -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
+  587  cd
+  588  kubectl get pods --all-namespaces
+  589  kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
+  590  kubectl get pods --all-namespaces
+  591  netstat -an | grep 8443
+  592  kubectl port-forward ls
+  593  kubectl port-forward -h
+  594  kubectl port-forward
+  595  kubectl port-forward --all-namespaces ls
+  596  kubectl get pods --all-namespaces
+  597  kubectl get deployments
+  598  docker ps
+  599  kubectl get pods --all-namespaces
+  600  kubectl get deployments
+  601  kubectl delete deployment nginx-deployment
+  602  kubectl get deployments
+  603  kubectl get pods --all-namespaces
+  604  kubeadm reset
+  605  kubectl -n kubernetes-dashboard delete serviceaccount admin-user
+  606  kubectl -n kubernetes-dashboard delete clusterrolebinding admin-user
+  607  kubeadm init --pod-network-cidr=192.168.0.0/16
+  608   mkdir -p $HOME/.kube
+  609    sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  610  export KUBECONFIG=/etc/kubernetes/admin.conf
+  611  kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
+  612  kubectl create -f https://docs.projectcalico.org/manifests/custom-resources.yaml
+  613  kubectl get pods --all-namespaces
+  614  kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
+  615  kubectl get pods --all-namespaces
+  616  kubeadm reset
+  617  ls -ltrah
+  618  rm -rf .kube
+  619  ls -ltr
+  620  kubectl get pods --all-namespaces
+  621  kubeadm init --pod-network-cidr=192.168.0.0/16
+  622   export KUBECONFIG=/etc/kubernetes/admin.conf
+  623  kubectl get pods --all-namespaces
+  624  mkdir -p $HOME/.kube
+  625  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  626  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+  627   export KUBECONFIG=/etc/kubernetes/admin.conf
+  628  kubectl get pods --all-namespaces
+  629  kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
+  630  kubectl create -f https://docs.projectcalico.org/manifests/custom-resources.yaml
+  631  kubectl get pods --all-namespaces
+  632  kubectl taint nodes --all node-role.kubernetes.io/master-
+  633  kubectl get nodes -o wide
+  634  kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
+  635  kubectl get pods --all-namespaces
+  636  cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: admin-user
+  namespace: kubernetes-dashboard
+EOF
+
+  637  cat <<EOF | kubectl apply -f -
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: admin-user
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: admin-user
+  namespace: kubernetes-dashboard
+EOF
+
+  638  kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')
+  639  kubectl get nodes -o wide
+  640  ls -ltr
+  641  kubectl create –f deploy.yml
+  642  kubectl create –f deploy.yaml
+  643  ls -ltr
+  644  kubectl create -f deploy.yaml
+  645  kubectl get pods --all-namespaces
+  646  cat deploy.yaml
+  647  cp deploy.yaml deploy1.yaml
+  648  vi deploy1.yaml
+  649  kubectl create -f deploy1.yaml
+  650  kubectl get deployments
+  651  kubectl get rs
+  652  cat deploy1.yaml
+  653  kubectl delete -f deploy1.yaml
+  654  vi deploy1.yaml
+  655  kubectl create -f deploy1.yaml
+  656  kubectl delete -f deploy1.yaml
+  657  vi deploy1.yaml
+  658  kubectl create -f deploy1.yaml
+  659  kubectl delete -f deploy1.yaml
+  660  vi deploy1.yaml
+  661  kubectl create -f deploy1.yaml
+  662  kubectl delete -f deploy1.yaml
+  663  rm deploy1.yaml
+  664  clear
+  665  kubectl get pods
+  666  kubectl get rs
+  667  kubectl get deployments
+  668  kubectl describe deployments
+  669  ls -ltr
+  670  vi deploy.yaml
+  671  kubectl set image deployment/nginx-deployment nginx=nginx:1.9.1 --record
+  672  kubectl rollout status deployment.v1.apps/nginx-deployment
+  673  cat deploy.yaml
+  674  kubectl get rs
+  675  kubectl describe deployments
+  676  kubectl rollout undo deployment.v1.apps/nginx-deployment
+  677  kubectl rollout status deployment.v1.apps/nginx-deployment
+  678  kubectl get rs
+  679  kubectl describe deployments
+  680  kubectl rollout undo deployment.v1.apps/nginx-deployment
+  681  kubectl rollout status deployment.v1.apps/nginx-deployment
+  682  kubectl describe deployments
+  683  kubectl scale deployment.v1.apps/nginx-deployment --replicas=10
+  684  kubectl get rs
+  685  kubectl get deployments
+  686  kubectl scale deployment.v1.apps/nginx-deployment --replicas=2
+  687  kubectl get deployments
+  688  kubectl autoscale deployment.v1.apps/nginx-deployment --min=10 --max=15 --cpu-percent=80
+  689  kubectl get deployments
+  690  ls -ltr
+  691  cd docfile/
+  692  ls -ltr
+  693  cat Dockerfile
+  694  cd ..
+  695  ls -ltr
+  696  cat deploy.yaml
+  697  cp deploy.yaml deploy1.yaml
+  698  vi deploy1.yaml
+  699  kubectl create -f deploy1.yaml
+  700  vi deploy1.yaml
+  701  kubectl create -f deploy1.yaml
+  702  vi deploy1.yaml
+  703  kubectl create -f deploy1.yaml
+  704  kubectl get pods
+  705  kubeadm reset
+  706  ls -ltr
+  707  ls -ltrah
+  708  rm -rf .kube/
